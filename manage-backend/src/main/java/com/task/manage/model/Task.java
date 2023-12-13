@@ -2,7 +2,9 @@ package com.task.manage.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
@@ -19,6 +21,8 @@ public class Task {
     private String description;
     private int status;
     private int priority;
+    @CreatedDate
+    private LocalDateTime createdDate;
     private Long assignedUserId;
 
 
