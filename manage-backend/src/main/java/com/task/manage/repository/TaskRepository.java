@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TaskInterface extends JpaRepository<Task, Long> {
-    @Query("SELECT t FROM Task t WHERE t.assignedUserId = :userId")
-    List<Task> findTasksByAssignedUserId(@Param("userId") Long userId);
+public interface TaskRepository  extends JpaRepository<Task,Long> {
+    @Query("SELECT t FROM Task t WHERE t.assignedUserId = :id")
+    List<Task> findTasksByAssignedUserId(@Param("id") Long id);
 }

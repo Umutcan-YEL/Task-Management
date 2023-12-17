@@ -1,22 +1,19 @@
-package com.task.manage.controller;
+package com.task.manage.controller.admin;
 
 import com.task.manage.model.Task;
 import com.task.manage.service.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/task")
-public class TaskController {
-    TaskService taskService;
+@RequiredArgsConstructor
+@RequestMapping("/api/admin/task/")
+public class AdminTaskController {
 
-    @Autowired
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
+    private final TaskService taskService;
 
     @GetMapping("/get-all")
     public List<Task> getAllTasks() {
@@ -35,7 +32,7 @@ public class TaskController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
-        task.setTaskId(id);
+        task.setId(id);
         taskService.updateTask(task);
         return ResponseEntity.ok(task);
     }
