@@ -20,12 +20,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public List<Task> getUserAllTask(Long id) {
-        return taskRepository.findTasksByAssignedUserId(id);
+        return taskRepository.findTasksByAssignedTaskBarId(id);
     }
 
 
     public Task createTask(Long id, Task task) {
-        task.setAssignedUserId(id);
+        task.setAssignedTaskBarId(id);
         task.setCreatedDate(LocalDateTime.now());
         return taskRepository.save(task);
     }
